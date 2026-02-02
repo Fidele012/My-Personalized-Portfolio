@@ -5,6 +5,7 @@ import Navbar from "@/components/ui/Navbar";
 import Contact from "@/components/ui/Contact";
 import SkyBackground from "@/components/ui/SkyBackground";
 import { useRef } from "react";
+import Preloader from "@/components/ui/Preloader";
 
 // --- EXPERIENCE DATA (From your Resume) ---
 const experience = [
@@ -46,6 +47,7 @@ export default function Home() {
     <main ref={containerRef} className="relative w-full min-h-screen text-[#1a1a1a] selection:bg-cyan-200 selection:text-black">
       <SkyBackground />
       <Navbar />
+      <Preloader />
 
       {/* --- 3D HERO SECTION --- */}
       <section className="relative h-screen w-full flex flex-col justify-center items-center px-6 perspective-1000">

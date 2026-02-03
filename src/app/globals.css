@@ -8,12 +8,27 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-body {
+/* MERGED: Fixes white space + keeps existing styles */
+html, body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-start-rgb));
+  
+  /* --- THE NUCLEAR FIX FOR WHITE SPACE --- */
+  max-width: 100vw;        /* Forces width to never exceed screen */
+  overflow-x: hidden;      /* Hides any side-overflow */
+  position: relative;      /* Stabilizes layout */
+  touch-action: pan-y;     /* Allows vertical scrolling, blocks horizontal swipes */
+  scroll-behavior: smooth; /* Keeps your smooth scroll */
 }
 
-/* This allows smooth scrolling for the whole page */
-html {
-  scroll-behavior: smooth;
+/* Optional: Premium Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
 }

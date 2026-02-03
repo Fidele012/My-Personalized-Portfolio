@@ -7,7 +7,7 @@ import SkyBackground from "@/components/ui/SkyBackground";
 import { useRef } from "react";
 import Preloader from "@/components/ui/Preloader";
 
-// --- EXPERIENCE DATA (From your Resume) ---
+// --- EXPERIENCE DATA ---
 const experience = [
   {
     role: "Founder & Lead Engineer",
@@ -44,8 +44,8 @@ export default function Home() {
   const opacityHero = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   return (
-    // FIX: Added 'overflow-x-hidden' to prevent mobile horizontal scrolling issues
-    <main ref={containerRef} className="relative w-full min-h-screen text-[#1a1a1a] selection:bg-cyan-200 selection:text-black overflow-x-hidden">
+    // FIX: Added 'max-w-[100vw]' and 'overflow-x-hidden' to strictly lock the width
+    <main ref={containerRef} className="relative w-full max-w-[100vw] min-h-screen text-[#1a1a1a] selection:bg-cyan-200 selection:text-black overflow-x-hidden">
       <SkyBackground />
       <Navbar />
       <Preloader />

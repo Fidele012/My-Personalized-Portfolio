@@ -5,7 +5,7 @@ import "react-vertical-timeline-component/style.min.css";
 import { experiences } from "../../constants";
 import SectionWrapper from "../../hoc/SectionWrapper";
 
-// Generic Icon Component if images are missing
+// Generic Icon Component
 const DefaultIcon = () => (
   <div className="flex justify-center items-center w-full h-full bg-gray-200 rounded-full">
     <span className="text-black font-bold text-xs">WORK</span>
@@ -23,7 +23,13 @@ const ExperienceCard = ({ experience }: any) => {
       icon={
         experience.icon ? (
           <div className='flex justify-center items-center w-full h-full'>
-            <img src={experience.icon} alt={experience.company_name} className='w-[60%] h-[60%] object-contain' />
+            <img 
+              src={experience.icon} 
+              alt={experience.company_name} 
+              className='w-[60%] h-[60%] object-contain'
+              loading="lazy"   // 👈 Optimization: Loads image only when needed
+              decoding="async" // 👈 Optimization: Decodes image in background
+            />
           </div>
         ) : <DefaultIcon />
       }
@@ -54,7 +60,7 @@ const Experience = () => {
       </div>
 
       <div className='mt-10 flex flex-col'>
-        {/* animate={false} REMOVES THE SLUGGISHNESS */}
+        {/* animate={false} is critical for removing sluggishness on phones */}
         <VerticalTimeline lineColor="#e5e7eb" animate={false}>
           {experiences.map((experience, index) => (
             <ExperienceCard key={`experience-${index}`} experience={experience} />

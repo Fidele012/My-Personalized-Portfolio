@@ -7,17 +7,31 @@ export default function Preloader() {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // 50ms * 100 = 5000ms (5 seconds)
+    // 1. CHECK: Has the user visited recently?
+    const hasVisited = typeof window !== "undefined" ? sessionStorage.getItem("portfolio-visited") : null;
+
+    if (hasVisited) {
+      // If yes, HIDE INSTANTLY. No waiting.
+      setIsVisible(false);
+      return;
+    }
+
+    // 2. If first time, RUN ANIMATION (Faster Speed)
+    // 15ms * 100 = 1.5 seconds (Instead of 5 seconds)
     const timer = setInterval(() => {
       setCount((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
-          setTimeout(() => setIsVisible(false), 800); 
+          setTimeout(() => setIsVisible(false), 500); 
+          
+          // Mark as visited so it doesn't run again on this session
+          sessionStorage.setItem("portfolio-visited", "true");
+          
           return 100;
         }
         return prev + 1;
       });
-    }, 50); // 👈 Set to exactly 50ms for a 5-second load time
+    }, 15); // 👈 Set to 15ms for a snappy 1.5-second load time
 
     return () => clearInterval(timer);
   }, []);

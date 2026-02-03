@@ -44,7 +44,8 @@ export default function Home() {
   const opacityHero = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   return (
-    <main ref={containerRef} className="relative w-full min-h-screen text-[#1a1a1a] selection:bg-cyan-200 selection:text-black">
+    // FIX: Added 'overflow-x-hidden' to prevent mobile horizontal scrolling issues
+    <main ref={containerRef} className="relative w-full min-h-screen text-[#1a1a1a] selection:bg-cyan-200 selection:text-black overflow-x-hidden">
       <SkyBackground />
       <Navbar />
       <Preloader />

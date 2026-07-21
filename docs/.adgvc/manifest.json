@@ -1,0 +1,17 @@
+[
+  {
+    "docPath": "docs/layout.md",
+    "sources": [
+      {
+        "repoFullName": "Fidele012/My-Personalized-Portfolio",
+        "path": "src/app/layout.tsx",
+        "branch": "main",
+        "commitSha": "cabbdb23dc274b3ef1e7fb0db99e6391ce324428"
+      }
+    ],
+    "generatedAt": "2026-07-21T13:16:51.814Z",
+    "generator": "ADGVC",
+    "authorLogin": "Fidele012",
+    "version": 1
+  }
+]
